@@ -3,29 +3,36 @@
 import { Project, MenuItem, CVItem } from './types';
 
 /*
-  [🗂️ 파일 관리 및 폴더 구조 가이드]
+  =============================================================================
+  🚨 [중요] 사이트 내용 및 이미지 수정은 이 파일에서 합니다! 🚨
+  =============================================================================
+  
+  README.md는 설명서일 뿐입니다. 
+  사진이나 텍스트를 바꾸려면 아래 코드의 내용을 직접 수정해야 화면에 반영됩니다.
 
-  프로젝트별로 파일이 섞이지 않도록, 아래와 같이 폴더를 나누어 관리하는 것을 추천합니다.
-  프로젝트 루트의 'public' 폴더 안에 아래 구조대로 폴더를 만드세요.
+  [이미지 및 미디어 파일 교체 가이드]
+  1. 프로젝트 루트(최상위 폴더)에 'public' 폴더가 있는지 확인하세요. (Vite 프로젝트 기본 구조)
+  2. 'public' 폴더 안에 'images' 같은 폴더를 만드세요.
+  3. 준비된 사진, 비디오 파일을 그 안에 넣으세요.
+  4. 아래 코드에서 URL을 파일 경로로 변경하세요.
+     예) imageUrl: '/images/my-work.jpg'
+     (주의: '/public'을 경로에 포함하지 마세요. '/'가 public 폴더를 의미합니다.)
 
+  [📂 추천 폴더 구조]
   public/
-   └── images/
-        ├── autopsy/            (Autopsy of Sensing: 사진, 오디오, 비디오)
-        ├── resonair/           (Resonair: 사진, 비디오)
-        ├── afropolik/          (Afropolik: 사진, 비디오)
-        ├── antio/              (Antio: 비디오)
-        ├── echoia/             (Echoia: 사진, 비디오)
-        ├── object-metamorphosis/ (사진)
-        ├── debris-tracer/      (사진)
-        ├── jujube/             (Jujube Universe: 사진, 비디오)
-        ├── seed-capsule/       (Seed Capsule: 사진, 비디오)
-        ├── vom-blick/          (Vom Blick: 비디오)
-        ├── oensa-ant/          (Oensa Ant: 비디오)
-        └── ceramics/           (도자 작업 사진들)
-
-  * 파일을 넣은 후, 아래 코드에서 주석(// [파일교체시]...)에 적힌 경로로 imageUrl 값을 변경하세요.
-  * 경로는 항상 '/images/...' 로 시작해야 합니다.
-  * 영상은 Vimeo(비메오) 임베드 링크를 추천합니다.
+    └── images/
+         ├── autopsy/            (Autopsy of Sensing)
+         ├── resonair/           (Resonair)
+         ├── afropolik/          (Afropolik)
+         ├── antio/              (Antio)
+         ├── echoia/             (Echoia)
+         ├── object-metamorphosis/
+         ├── debris-tracer/
+         ├── jujube/
+         ├── seed-capsule/
+         ├── vom-blick/
+         ├── oensa-ant/
+         └── ceramics/           (Ceramics)
 */
 
 export const MENU_ITEMS: MenuItem[] = [
@@ -126,7 +133,7 @@ I unfold the deconstruction and afterlife of sensation through the vibrations an
     // 📂 폴더: public/images/autopsy/
     imageUrl: 'https://picsum.photos/600/400?grayscale&blur=1', // [파일교체시]: '/images/autopsy/main.jpg'
     audioUrl: 'placeholder', // [파일교체시]: '/images/autopsy/sound.mp3'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/autopsy/video.mp4' (또는 'https://player.vimeo.com/video/12345678')
+    videoUrl: 'placeholder', // [파일교체시]: '/images/autopsy/video.mp4' (또는 비메오 URL)
     galleryUrls: [
        'https://picsum.photos/600/400?grayscale&blur=1', // [파일교체시]: '/images/autopsy/01.jpg'
        'https://picsum.photos/600/400?grayscale'         // [파일교체시]: '/images/autopsy/02.jpg'
@@ -144,8 +151,8 @@ I unfold the deconstruction and afterlife of sensation through the vibrations an
     credits: 'Photography: Lars Gonikman, Jennifer Braun',
     
     // 📂 폴더: public/images/resonair/
-    imageUrl: '/images/resonair/main.png', // [파일교체시]: '/images/resonair/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/resonair/video.mp4' (또는 비메오)
+    imageUrl: 'https://picsum.photos/seed/resonair1/800/600?grayscale', // [파일교체시]: '/images/resonair/main.jpg'
+    videoUrl: 'placeholder', // [파일교체시]: '/images/resonair/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/seed/resonair1/800/600?grayscale', // [파일교체시]: '/images/resonair/01.jpg'
       'https://picsum.photos/seed/resonair2/800/600?grayscale', // [파일교체시]: '/images/resonair/02.jpg'
@@ -173,7 +180,8 @@ By rendering breath both as a fleeting trace and an act of survival, Resonair bl
     
     // 📂 폴더: public/images/afropolik/
     imageUrl: 'https://picsum.photos/seed/afro1/800/600?grayscale', // [파일교체시]: '/images/afropolik/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/afropolik/video.mp4' (또는 비메오)
+    // 비메오 영상 링크 적용됨
+    videoUrl: 'https://player.vimeo.com/video/1060243247?badge=0&autopause=0&player_id=0&app_id=58479', 
     galleryUrls: [
       'https://picsum.photos/seed/afro1/800/600?grayscale', // [파일교체시]: '/images/afropolik/01.jpg'
       'https://picsum.photos/seed/afro2/800/600?grayscale',
@@ -194,10 +202,11 @@ By combining mechanical movement and sound, the work alludes to a future where a
     year: '2025',
     location: 'Germany',
     exhibition: 'Hochschultage 2025, HfK Bremen, Bremen, Germany',
+    credits: 'Generated with Pika, Sora, Suno',
     
     // 📂 폴더: public/images/antio/
     imageUrl: 'https://picsum.photos/seed/antio1/800/600?grayscale', // [파일교체시]: '/images/antio/thumbnail.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/antio/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/antio/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/seed/antio1/800/600?grayscale', // [파일교체시]: '/images/antio/01.jpg'
       'https://picsum.photos/seed/antio2/800/600?grayscale'
@@ -221,7 +230,7 @@ The sound design, featuring manipulated voices and distorted audio layers, reinf
     
     // 📂 폴더: public/images/echoia/
     imageUrl: 'https://picsum.photos/seed/echoia1/800/600?grayscale', // [파일교체시]: '/images/echoia/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/echoia/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/echoia/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/seed/echoia1/800/600?grayscale', // [파일교체시]: '/images/echoia/01.jpg'
       'https://picsum.photos/seed/echoia2/800/600?grayscale',
@@ -266,7 +275,7 @@ The typography reflects this intention, designed in a fragmented and incomplete 
     
     // 📂 폴더: public/images/debris-tracer/
     imageUrl: 'https://picsum.photos/seed/debris1/500/500?grayscale', // [파일교체시]: '/images/debris-tracer/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/debris-tracer/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/debris-tracer/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/seed/debris1/800/600?grayscale', // [파일교체시]: '/images/debris-tracer/01.jpg'
       'https://picsum.photos/seed/debris2/800/600?grayscale'
@@ -287,7 +296,7 @@ The final page offers a unique experience with each visit, featuring diverse mus
     
     // 📂 폴더: public/images/jujube/
     imageUrl: 'https://picsum.photos/600/450?grayscale', // [파일교체시]: '/images/jujube/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/jujube/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/jujube/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/600/450?grayscale', // [파일교체시]: '/images/jujube/01.jpg'
       'https://picsum.photos/600/450?grayscale&blur=2'
@@ -306,7 +315,7 @@ In this artwork, the jujube serves as a prominent motif that will greatly influe
     
     // 📂 폴더: public/images/seed-capsule/
     imageUrl: 'https://picsum.photos/seed/seedcapsule1/600/400?grayscale', // [파일교체시]: '/images/seed-capsule/main.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/seed-capsule/vr-demo.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/seed-capsule/vr-demo.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/seed/seedcapsule1/600/400?grayscale', // [파일교체시]: '/images/seed-capsule/01.jpg'
       'https://picsum.photos/seed/seedcapsule2/600/400?grayscale'
@@ -325,7 +334,7 @@ This work takes the form of an interactive VR experience, comprising rooms with 
     
     // 📂 폴더: public/images/vom-blick/
     imageUrl: 'https://picsum.photos/600/350?grayscale', // [파일교체시]: '/images/vom-blick/thumbnail.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/vom-blick/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/vom-blick/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/600/350?grayscale', // [파일교체시]: '/images/vom-blick/01.jpg'
       'https://picsum.photos/600/350?grayscale&blur=2'
@@ -344,7 +353,7 @@ I steer the narrative of the video by vigilantly considering when I view things 
     
     // 📂 폴더: public/images/oensa-ant/
     imageUrl: 'https://picsum.photos/600/400?grayscale', // [파일교체시]: '/images/oensa-ant/thumbnail.jpg'
-    videoUrl: 'placeholder', // [파일교체시]: '/images/oensa-ant/video.mp4' (또는 비메오)
+    videoUrl: 'placeholder', // [파일교체시]: '/images/oensa-ant/video.mp4' (또는 비메오 URL)
     galleryUrls: [
       'https://picsum.photos/600/400?grayscale', // [파일교체시]: '/images/oensa-ant/01.jpg'
       'https://picsum.photos/600/400?grayscale&blur=2'
