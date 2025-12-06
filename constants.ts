@@ -71,7 +71,7 @@ export const EDUCATION: CVItem[] = [
 export const EXHIBITIONS: CVItem[] = [
   { year: 2025, title: "ONE PIECE", description: "Choreographed by the Machines", location: "NebenFlut, HfK Bremen, Bremen, Germany" },
   { year: 2025, title: "Lichtrouten 2025", location: "Lüdenscheid, Germany" },
-  { year: 2025, title: "BLAUES RAUSCHEN 2025", description: "Data Ethics and Creative Practice - A Critical Workshop, Philharmonie Essen, Essen, Germany" },
+  { year: 2025, title: "BLAUES RAUSCHEN 2025", description: "Performance, Philharmonie Essen, Essen, Germany" },
   { year: 2025, title: "Hochschultage 2025", location: "HfK Bremen, Bremen, Germany" },
   { year: 2024, title: "MAP 2024 - POSTER SERIES", description: "an art project on mobility in the streets of Hanoi (Collaborate with GHTK)", location: "Hanoi Downtown, Vietnam" },
   { year: 2024, title: "Goldstücke 2024 - Licht Kunst Projekte Gelsenkirchen", location: "Gelsenkirchen, Germany" },
@@ -88,6 +88,7 @@ export const AWARDS: CVItem[] = [
 
 export const EXPERIENCES: CVItem[] = [
   { year: 2025, title: "VJ-ing Workshop", description: "Xenorama Studio, Bremen, Germany" },
+  { year: 2025, title: "BLAUES RAUSCHEN 2025", description: "Data Ethics and Creative Practice - A Critical Workshop, Essen, Germany" },
   { year: 2024, title: "MAP 2024 - Movement", description: "HfK Bremen & Heritage Art Space - Hanoi, Vietnam, Bremen, Germany" },
   { year: 2024, title: "VJ-ing Workshop", description: "We Dig it + Xenorama Studio, Bremen, Germany" },
   { year: 2023, title: "Projection Mapping Workshop", description: "We Dig it + Xenorama Studio, Bremen, Germany" },
@@ -102,6 +103,7 @@ export const WORK: CVItem[] = [
 ];
 
 export const CONTRIBUTIONS: CVItem[] = [
+  { year: 2025, title: "That's My Neighbour", description: "3D Modeling & Animation, The Fike Room, Busan, South Korea" },
   { year: 2024, title: "Ouroboros", description: "CGI & AI generated image, Hara Shin, Seoul, South Korea" }
 ];
 
