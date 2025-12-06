@@ -33,4 +33,12 @@ export interface CVItem {
   school?: string;
 }
 
+export interface Writing {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+  content: string; // Full text content
+}
+
 export type AsciiCharSet = 'density' | 'binary' | 'blocks';

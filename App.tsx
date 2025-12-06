@@ -1,4 +1,6 @@
 
+
+
 import React, { useState, useEffect } from 'react';
 import AsciiBackground from './components/AsciiBackground';
 import GlitchText from './components/GlitchText';
@@ -24,13 +26,14 @@ type ViewState = 'home' | 'projects' | 'ceramics' | 'writings' | 'bio' | 'contac
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const [selectedWritingId, setSelectedWritingId] = useState<string | null>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   // Scroll to top on view change
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentView, selectedProjectId]);
+  }, [currentView, selectedProjectId, selectedWritingId]);
 
   // Reset slide index when project changes
   useEffect(() => {
@@ -40,13 +43,14 @@ const App: React.FC = () => {
   }, [selectedProjectId]);
 
   const navigateTo = (view: ViewState) => {
-    // If clicking the same view, just return (unless we are deep in a project, then reset)
-    if (view === currentView && !selectedProjectId && view !== 'home') return;
+    // If clicking the same view, just return (unless we are deep in a project/writing, then reset)
+    if (view === currentView && !selectedProjectId && !selectedWritingId && view !== 'home') return;
     
     setIsTransitioning(true);
     setTimeout(() => {
       setCurrentView(view);
       setSelectedProjectId(null); // Reset selection on nav
+      setSelectedWritingId(null); // Reset writing selection on nav
       setIsTransitioning(false);
     }, 100); 
   };
@@ -59,7 +63,16 @@ const App: React.FC = () => {
     }, 100);
   };
 
+  const handleWritingClick = (writingId: string) => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setSelectedWritingId(writingId);
+      setIsTransitioning(false);
+    }, 100);
+  };
+
   const selectedProjectData = selectedProjectId ? PROJECTS.find(p => p.id === selectedProjectId) : null;
+  const selectedWritingData = selectedWritingId ? WRITINGS.find(w => w.id === selectedWritingId) : null;
   
   // Get all images for the slider. Fallback to single imageUrl if galleryUrls is empty
   const projectImages = selectedProjectData 
@@ -190,7 +203,7 @@ const App: React.FC = () => {
                  <button
                    key={item.id}
                    onClick={() => navigateTo(item.id as ViewState)}
-                   className={`hover:opacity-100 transition-opacity text-right ${currentView === item.id && !selectedProjectId ? 'opacity-100 font-bold' : 'opacity-40'}`}
+                   className={`hover:opacity-100 transition-opacity text-right ${currentView === item.id && !selectedProjectId && !selectedWritingId ? 'opacity-100 font-bold' : 'opacity-40'}`}
                  >
                    <GlitchText text={item.label} triggerOnLoad={false} />
                  </button>
@@ -203,14 +216,21 @@ const App: React.FC = () => {
             
             <header className="mb-16">
                <h2 className="text-4xl md:text-5xl font-heading font-light uppercase tracking-tight">
-                 <GlitchText text={selectedProjectId ? 'Project View' : currentView} />
+                 <GlitchText 
+                    text={
+                        selectedProjectId ? 'Project View' : 
+                        selectedWritingId ? 'Reading' : 
+                        currentView
+                    } 
+                 />
                </h2>
-               {selectedProjectId && (
+               {(selectedProjectId || selectedWritingId) && (
                  <button 
                     onClick={() => {
                       setIsTransitioning(true);
                       setTimeout(() => {
                         setSelectedProjectId(null);
+                        setSelectedWritingId(null);
                         setIsTransitioning(false);
                       }, 100);
                     }}
@@ -422,16 +442,42 @@ const App: React.FC = () => {
 
               {/* WRITINGS */}
               {currentView === 'writings' && (
-                <div className="max-w-3xl space-y-16">
-                  {WRITINGS.map((w, i) => (
-                     <article key={i} className="group cursor-pointer">
-                        <div className="font-mono text-[10px] text-gray-400 mb-2">{w.date}</div>
-                        <h3 className="text-2xl font-heading font-medium mb-3 group-hover:italic transition-all">{w.title}</h3>
-                        <p className="text-sm font-light leading-relaxed text-gray-600">{w.summary}</p>
-                        <div className="mt-4 w-12 h-px bg-gray-200 group-hover:w-full transition-all duration-500"></div>
-                     </article>
-                  ))}
-                </div>
+                <>
+                  {!selectedWritingId ? (
+                    /* Writings List View */
+                    <div className="max-w-3xl space-y-16">
+                      {WRITINGS.map((w) => (
+                         <article key={w.id} className="group cursor-pointer" onClick={() => handleWritingClick(w.id)}>
+                            <div className="font-mono text-[10px] text-gray-400 mb-2">{w.date}</div>
+                            <h3 className="text-2xl font-heading font-medium mb-3 group-hover:italic transition-all">{w.title}</h3>
+                            <p className="text-sm font-light leading-relaxed text-gray-600">{w.summary}</p>
+                            <div className="mt-4 w-12 h-px bg-gray-200 group-hover:w-full transition-all duration-500"></div>
+                         </article>
+                      ))}
+                    </div>
+                  ) : (
+                    /* Writing Detail View */
+                    selectedWritingData && (
+                      <div className="animate-fade-in max-w-3xl mx-auto">
+                        <div className="mb-6 font-mono text-xs text-gray-500 uppercase tracking-widest border-b border-black/10 pb-4">
+                          {selectedWritingData.date}
+                        </div>
+                        <h1 className="text-3xl md:text-5xl font-heading font-light mb-12 leading-tight">
+                          {selectedWritingData.title}
+                        </h1>
+                        <div className="prose prose-sm md:prose-base font-light text-justify text-gray-800 whitespace-pre-line leading-loose">
+                           {selectedWritingData.content}
+                        </div>
+                        
+                        <div className="mt-20 pt-8 border-t border-gray-200">
+                          <p className="font-mono text-[10px] text-gray-400">
+                            &copy; Soobeen Woo. Text may not be reproduced without permission.
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  )}
+                </>
               )}
 
               {/* BIO */}
