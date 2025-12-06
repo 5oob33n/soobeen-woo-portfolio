@@ -69,7 +69,9 @@ export const EDUCATION: CVItem[] = [
 ];
 
 export const EXHIBITIONS: CVItem[] = [
+  { year: 2025, title: "ONE PIECE", description: "Choreographed by the Machines", location: "NebenFlut, HfK Bremen, Bremen, Germany" },
   { year: 2025, title: "Lichtrouten 2025", location: "Lüdenscheid, Germany" },
+  { year: 2025, title: "BLAUES RAUSCHEN 2025", description: "Data Ethics and Creative Practice - A Critical Workshop, Philharmonie Essen, Essen, Germany" },
   { year: 2025, title: "Hochschultage 2025", location: "HfK Bremen, Bremen, Germany" },
   { year: 2024, title: "MAP 2024 - POSTER SERIES", description: "an art project on mobility in the streets of Hanoi (Collaborate with GHTK)", location: "Hanoi Downtown, Vietnam" },
   { year: 2024, title: "Goldstücke 2024 - Licht Kunst Projekte Gelsenkirchen", location: "Gelsenkirchen, Germany" },
@@ -80,7 +82,6 @@ export const EXHIBITIONS: CVItem[] = [
 
 export const AWARDS: CVItem[] = [
   { year: 2025, title: "Open Space - Domshof", description: "Vjing Performance, Bremen, Germany" },
-  { year: 2025, title: "BLAUES RAUSCHEN 2025", description: "Data Ethics and Creative Practice - A Critical Workshop, Philharmonie Essen, Essen, Germany" },
   { year: 2024, title: "Dreaming Streams", description: "Goldstücke - Licht kunst Projekte Gelsenkirchen Diplopia Open Call, Team KIS, Gelsenkirchen, Germany" },
   { year: 2024, title: "Open Space - Domshof", description: "Vjing Performance, Bremen, Germany" }
 ];

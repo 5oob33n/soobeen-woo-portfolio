@@ -506,7 +506,7 @@ const App: React.FC = () => {
                     {/* Resume / CV Sections */}
                     <div className="border-t border-black pt-16">
                       {renderCVSection('Education', EDUCATION)}
-                      {renderCVSection('Exhibitions', EXHIBITIONS)}
+                      {renderCVSection('Exhibitions & Performances', EXHIBITIONS)}
                       {renderCVSection('Awards & Grants', AWARDS)}
                       {renderCVSection('Experience', EXPERIENCES)}
                       {renderCVSection('Work', WORK)}
