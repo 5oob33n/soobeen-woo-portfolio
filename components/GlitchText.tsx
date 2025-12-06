@@ -18,8 +18,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({
 }) => {
   const [displayText, setDisplayText] = useState(text);
   const [isHovering, setIsHovering] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(!triggerOnLoad);
-
+  
   // Decoding Effect Function
   const playDecodeAnimation = () => {
     let iterations = 0;
@@ -35,6 +34,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({
 
       if (iterations >= text.length) {
         clearInterval(interval);
+        setDisplayText(text); // Ensure final state is exact
       }
       
       iterations += 1 / 2; // Speed of decoding
@@ -43,18 +43,15 @@ const GlitchText: React.FC<GlitchTextProps> = ({
     return () => clearInterval(interval);
   };
 
-  // Trigger on Mount
+  // Trigger when text changes or on load
   useEffect(() => {
-    if (triggerOnLoad && !hasLoaded) {
-      const cleanup = playDecodeAnimation();
-      setHasLoaded(true);
-      return cleanup;
+    if (triggerOnLoad) {
+      return playDecodeAnimation();
+    } else {
+      setDisplayText(text);
     }
-  }, [triggerOnLoad, hasLoaded, text]);
+  }, [text, triggerOnLoad]);
 
-  // Hover Effect: "The more you try to see, the more it disappears"
-  // We add a blur effect via CSS class when hovering
-  
   return (
     <Tag 
       className={`${className} inline-block cursor-default transition-all duration-300 

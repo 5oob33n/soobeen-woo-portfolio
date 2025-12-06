@@ -473,7 +473,7 @@ const App: React.FC = () => {
                             <h3 className="text-2xl font-heading font-medium mb-3 group-hover:italic transition-all">{w.title}</h3>
                             <p className="text-sm font-light leading-relaxed text-gray-600">{w.summary}</p>
                             <button className="mt-4 text-xs font-bold uppercase tracking-widest border-b border-black pb-0.5 hover:opacity-50 transition-opacity">
-                              Read Essay
+                              Read More
                             </button>
                             <div className="mt-6 w-12 h-px bg-gray-200 group-hover:w-full transition-all duration-500"></div>
                          </article>
